@@ -6,11 +6,19 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
+import com.example.android.sunshine.R;
+
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Add preferences from XML
+        addPreferencesFromResource(R.xml.pref_general);
+
+        // Add preference
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
     }
 
     private void bindPreferenceSummaryToValue(Preference preference) {
